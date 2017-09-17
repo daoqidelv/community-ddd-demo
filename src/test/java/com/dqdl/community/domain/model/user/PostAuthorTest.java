@@ -1,14 +1,14 @@
 /**
  * 
  */
-package com.dqdl.community.domain.model.post;
+package com.dqdl.community.domain.model.user;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.dqdl.community.constant.ExceptionCode;
 import com.dqdl.community.domain.model.post.Post;
-import com.dqdl.community.domain.model.post.PostAuthor;
+import com.dqdl.community.domain.model.user.PostAuthor;
 import com.dqdl.community.exception.BusinessException;
 
 import static org.junit.Assert.assertTrue;

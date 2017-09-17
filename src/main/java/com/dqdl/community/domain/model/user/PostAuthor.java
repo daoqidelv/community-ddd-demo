@@ -1,9 +1,10 @@
 /**
  * 
  */
-package com.dqdl.community.domain.model.post;
+package com.dqdl.community.domain.model.user;
 
 import com.dqdl.community.constant.ExceptionCode;
+import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.exception.BusinessException;
 
 /**
@@ -12,12 +13,10 @@ import com.dqdl.community.exception.BusinessException;
  * @CreateDate 2017年9月16日
  *
  */
-public class PostAuthor {
-	
-	private long id;
+public class PostAuthor extends User{
 	
 	public PostAuthor(long id) {
-		this.id = id;
+		super(id);
 	}
 	/**
 	 * 发布帖子
@@ -29,21 +28,8 @@ public class PostAuthor {
 		if(sourceContent.length() < 16) {
 			throw new BusinessException(ExceptionCode.POST_SOURCE_CONTENT_AT_LEAST_SIXTEEN_WORDS); //抛出业务异常
 		}
-		Post post = new Post(this.id, title, sourceContent);
+		Post post = new Post(this.getId(), title, sourceContent);
 		return post;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}	
 }

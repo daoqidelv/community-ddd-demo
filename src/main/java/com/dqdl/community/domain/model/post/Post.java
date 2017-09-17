@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import com.dqdl.community.constant.CommonConstants;
 import com.dqdl.community.constant.ExceptionCode;
 import com.dqdl.community.domain.model.Topic.TopicPost;
+import com.dqdl.community.domain.model.user.PostAuthor;
 import com.dqdl.community.domain.service.contentfilter.PostMainBodyContentFilterChain;
 import com.dqdl.community.domain.service.contentfilter.PostTitleContentFilterChain;
 import com.dqdl.community.exception.BusinessException;
@@ -53,6 +54,10 @@ public class Post {
 	 * @see com.dqdl.community.domain.model.post.PostStatus
      */
     private PostStatus status;
+    /**
+     * 帖子作者
+     */
+    private PostAuthor postAuthor;
     
     /**
      * 帖子加入的话题
@@ -70,6 +75,14 @@ public class Post {
     	this.setAuthorId(authorId);
     	this.setTitle(title);
     	this.setSourceContent(sourceContent);
+    	this.setPostAuthor(new PostAuthor(authorId));
+    }
+    
+    /**
+     * 删除帖子
+     */
+    public void delete() {
+    	this.setStatus(PostStatus.HAS_DELETED);
     }
     
     /**
@@ -153,9 +166,10 @@ public class Post {
 		return authorId;
 	}
 	/**
-	 * @param authorId the authorId to set
+	 * @param authorId the authorId to set	 * 
+	 * NOTE: avoid client only modify authorId, but not modify PostAuthor at the same time， set this setter private
 	 */
-	public void setAuthorId(long authorId) {
+	private void setAuthorId(long authorId) {
 		Assert.isTrue(authorId > 0, "Post's authorId must greater than ZERO.");
 		this.authorId = authorId;
 	}
@@ -225,6 +239,18 @@ public class Post {
 	 */
 	public void setStatus(PostStatus status) {
 		this.status = status;
+	}
+
+	public PostAuthor getPostAuthor() {
+		return postAuthor;
+	}
+
+	/**
+	 * NOTE: avoid client only modify postAuthor, but not modify authorId at the same time, set this setter private
+	 * @param postAuthor
+	 */
+	private void setPostAuthor(PostAuthor postAuthor) {
+		this.postAuthor = postAuthor;
 	}
 	
 }
