@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.dqdl.community.constant.ExceptionCode;
 import com.dqdl.community.domain.model.post.Post;
+import com.dqdl.community.domain.model.post.PostStatus;
 import com.dqdl.community.domain.model.user.PostAuthor;
 import com.dqdl.community.exception.BusinessException;
 
@@ -24,10 +25,13 @@ public class PostAuthorTest {
 	private PostAuthor postAuthor;
 	private long authorId;
 	
+	private Post post;
+	
 	@Before
 	public void setUp() throws Exception {
 		authorId = 40;
 		postAuthor = new PostAuthor(authorId);
+		post = new Post(authorId, "测试帖子",  "测试帖子内容，内容必须大于16个字，字数不够我来凑！");
 	}
 	
 	@Test
@@ -69,6 +73,37 @@ public class PostAuthorTest {
 		} catch (BusinessException e) {
 			assertTrue(ExceptionCode.POST_SOURCE_CONTENT_AT_LEAST_SIXTEEN_WORDS.equals(e.getMessage()));
 		}	
+	}
+	
+	@Test
+	public void deletePostSuccess() {
+		try {
+			post = postAuthor.deletePost(post);
+			assertTrue(PostStatus.HAS_DELETED.equals(post.getStatus()));	
+		} catch (BusinessException e) {
+			fail("unExpected an BussinessException to be thrown, " + e.getMessage());
+		}
+	}
+	
+	@Test
+	public void deletePostFailWhenPostIsNull() {
+		try {
+			postAuthor.deletePost(null);
+			fail("expected an BussinessException to be thrown, but do not catch.");
+		} catch (BusinessException e) {
+			assertTrue(ExceptionCode.POST_IS_NOT_EXIT.equals(e.getMessage()));
+		}
+	}
+
+	@Test
+	public void deletePostFailWhenPostIsNotMine() {
+		try {
+			Post otherPost = new Post(41, "测试帖子",  "测试帖子内容，内容必须大于16个字，字数不够我来凑！");
+			postAuthor.deletePost(otherPost);
+			fail("expected an BussinessException to be thrown, but do not catch.");
+		} catch (BusinessException e) {
+			assertTrue(ExceptionCode.CAN_NOT_DELETE_OTHER_USERS_POST.equals(e.getMessage()));
+		}
 	}
 
 

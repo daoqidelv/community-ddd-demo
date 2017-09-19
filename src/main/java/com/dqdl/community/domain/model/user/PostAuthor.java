@@ -31,5 +31,22 @@ public class PostAuthor extends User{
 		Post post = new Post(this.getId(), title, sourceContent);
 		return post;
 	}
+	
+	/**
+     * 删帖
+     * @param post 拟被删除的帖子实体
+     * @return post 删帖后的帖子实体
+	 * @throws BusinessException 
+     */
+    public Post deletePost(Post post) throws BusinessException {
+        if (post == null) {
+            throw new BusinessException(ExceptionCode.POST_IS_NOT_EXIT);
+        }
+        if (!this.isMyself(post.getPostAuthor())) {
+            throw new BusinessException(ExceptionCode.CAN_NOT_DELETE_OTHER_USERS_POST);
+        }
+        post.delete();
+        return post;
+    }
 
 }
