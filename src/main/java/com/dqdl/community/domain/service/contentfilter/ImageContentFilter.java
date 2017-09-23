@@ -12,7 +12,7 @@ package com.dqdl.community.domain.service.contentfilter;
 public class ImageContentFilter extends ContentFilter {
 
 	/* (non-Javadoc)
-	 * @see com.dqdl.eco.domain.model.post.ContentFilter#filtContent(com.dqdl.eco.domain.model.post.Post)
+	 * @see com.dqdl.community.domain.model.post.ContentFilter#filtContent(com.dqdl.community.domain.model.post.Post)
 	 */
 	@Override
 	public boolean filtContent(Object content) {

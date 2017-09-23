@@ -6,11 +6,11 @@ package com.dqdl.community.domain.model.user;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.dqdl.community.constant.ExceptionCode;
+import com.dqdl.community.constant.ReturnCode;
 import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.domain.model.post.PostStatus;
 import com.dqdl.community.domain.model.user.PostAuthor;
-import com.dqdl.community.exception.BusinessException;
+import com.dqdl.community.infrastructure.exception.BusinessException;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -71,7 +71,7 @@ public class PostAuthorTest {
 			postAuthor.posting(null, sourceContent);
 			fail("Expected an BussinessException to be thrown, but don‘t catch." );
 		} catch (BusinessException e) {
-			assertTrue(ExceptionCode.POST_SOURCE_CONTENT_AT_LEAST_SIXTEEN_WORDS.equals(e.getMessage()));
+			assertTrue(ReturnCode.POST_SOURCE_CONTENT_AT_LEAST_SIXTEEN_WORDS.equals(e.getMessage()));
 		}	
 	}
 	
@@ -91,7 +91,7 @@ public class PostAuthorTest {
 			postAuthor.deletePost(null);
 			fail("expected an BussinessException to be thrown, but do not catch.");
 		} catch (BusinessException e) {
-			assertTrue(ExceptionCode.POST_IS_NOT_EXIT.equals(e.getMessage()));
+			assertTrue(ReturnCode.POST_IS_NOT_EXIT.equals(e.getMessage()));
 		}
 	}
 
@@ -102,7 +102,7 @@ public class PostAuthorTest {
 			postAuthor.deletePost(otherPost);
 			fail("expected an BussinessException to be thrown, but do not catch.");
 		} catch (BusinessException e) {
-			assertTrue(ExceptionCode.CAN_NOT_DELETE_OTHER_USERS_POST.equals(e.getMessage()));
+			assertTrue(ReturnCode.CAN_NOT_DELETE_OTHER_USERS_POST.equals(e.getMessage()));
 		}
 	}
 

@@ -13,13 +13,13 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.dqdl.community.constant.ExceptionCode;
+import com.dqdl.community.constant.ReturnCode;
 import com.dqdl.community.domain.model.Topic.TopicPost;
 import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.domain.model.post.PostStatus;
 import com.dqdl.community.domain.service.contentfilter.PostMainBodyContentFilterChain;
 import com.dqdl.community.domain.service.contentfilter.PostTitleContentFilterChain;
-import com.dqdl.community.exception.BusinessException;
+import com.dqdl.community.infrastructure.exception.BusinessException;
 
 /**
  * @author DAOQIDELV
@@ -83,7 +83,7 @@ public class PostTest {
 			this.post.joinTopics("17");
 			fail("expected an BussinessException to be thrown, but do not catch.");
 		} catch (BusinessException e) {
-			assertTrue(ExceptionCode.ONE_POST_MOST_JOIN_INTO_FIVE_TOPICS.equals(e.getMessage()));
+			assertTrue(ReturnCode.ONE_POST_MOST_JOIN_INTO_FIVE_TOPICS.equals(e.getMessage()));
 		}
 	}
 	

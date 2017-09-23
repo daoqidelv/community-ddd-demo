@@ -11,12 +11,12 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import com.dqdl.community.constant.CommonConstants;
-import com.dqdl.community.constant.ExceptionCode;
+import com.dqdl.community.constant.ReturnCode;
 import com.dqdl.community.domain.model.Topic.TopicPost;
 import com.dqdl.community.domain.model.user.PostAuthor;
 import com.dqdl.community.domain.service.contentfilter.PostMainBodyContentFilterChain;
 import com.dqdl.community.domain.service.contentfilter.PostTitleContentFilterChain;
-import com.dqdl.community.exception.BusinessException;
+import com.dqdl.community.infrastructure.exception.BusinessException;
 
 
 
@@ -70,6 +70,10 @@ public class Post {
     	this.postingTime = new Timestamp(System.currentTimeMillis());    	
     }
     
+    public Post(long id) {
+    	this.setId(id);
+    }
+    
     public Post(long authorId, String title, String sourceContent) {
     	this();
     	this.setAuthorId(authorId);
@@ -98,7 +102,7 @@ public class Post {
 			TopicPost topicPost = new TopicPost(Long.valueOf(topicIdArray[i]), this.getId());
     		this.topics.add(topicPost);
     		if(topicSize() > MAX_JOINED_TOPICS_NUM) {
-    			throw new BusinessException(ExceptionCode.ONE_POST_MOST_JOIN_INTO_FIVE_TOPICS);
+    			throw new BusinessException(ReturnCode.ONE_POST_MOST_JOIN_INTO_FIVE_TOPICS);
     		}
 		}
     }

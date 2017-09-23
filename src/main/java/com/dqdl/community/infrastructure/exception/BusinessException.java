@@ -1,4 +1,4 @@
-package com.dqdl.community.exception;
+package com.dqdl.community.infrastructure.exception;
 
 /**
  * 业务类异常，初始化时使用returnCode 作为message内容传入，具体的message异常参数放在auguments中传入

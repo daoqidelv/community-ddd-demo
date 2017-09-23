@@ -6,10 +6,10 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.dqdl.community.constant.ExceptionCode;
+import com.dqdl.community.constant.ReturnCode;
 import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.domain.model.post.PostStatus;
-import com.dqdl.community.exception.BusinessException;
+import com.dqdl.community.infrastructure.exception.BusinessException;
 
 public class PostReaderTest {
 	

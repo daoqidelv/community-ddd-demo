@@ -26,7 +26,7 @@ public class LocalTextContentFilter extends TextContentFilter {
 	
 
 	/* (non-Javadoc)
-	 * @see com.dqdl.eco.domain.model.post.TextContentFilter#filtContent(com.dqdl.eco.domain.model.post.Post)
+	 * @see com.dqdl.community.domain.model.post.TextContentFilter#filtContent(com.dqdl.community.domain.model.post.Post)
 	 */
 	@Override
 	public boolean filtContent(Object content) {
