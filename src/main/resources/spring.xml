@@ -20,7 +20,7 @@
 	<bean id="messageSource"  class="org.springframework.context.support.ResourceBundleMessageSource">
 	    <property name="basenames">
 	      <list>
-	        <value>errormsg</value>
+	        <value>returnmsg</value>
 	        <value>validation_error</value>
 	      </list>
 	    </property>

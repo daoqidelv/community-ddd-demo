@@ -23,8 +23,7 @@ public class PostRepository implements IPostRepository {
 	}
 
 	public int save(Post post) {
-		// TODO Auto-generated method stub
-		return 0;
+		return postMemoryRepository.save(post);
 	}
 
 }
