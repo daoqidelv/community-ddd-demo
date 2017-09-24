@@ -14,6 +14,9 @@ import com.dqdl.community.ui.dto.base.RequestDto;
 import com.dqdl.community.ui.dto.base.ResponseDto;
 import com.dqdl.community.ui.dto.post.DeletePostReqBody;
 import com.dqdl.community.ui.dto.post.PostingReqBody;
+import com.dqdl.community.ui.dto.post.PostingRespBody;
+import com.dqdl.community.ui.dto.post.QueryPostDetailReqBody;
+import com.dqdl.community.ui.dto.post.QueryPostDetailRespBody;
 
 @Controller
 @RequestMapping("/post")
@@ -31,8 +34,8 @@ public class PostController extends BaseController {
     @RequestMapping(value = "/posting", method = RequestMethod.POST)
     public ResponseDto posting(@RequestBody @Valid RequestDto<PostingReqBody> requestDto) {
         try {
-        	postService.posting ( requestDto );
-			return this.formatSuccessResponse(null);
+        	PostingRespBody postingRespBody = postService.posting (requestDto);
+			return this.formatSuccessResponse(postingRespBody);
 		} catch (Exception e) {
 			return this.formatErrorResponse(e);
 		}
@@ -51,6 +54,24 @@ public class PostController extends BaseController {
         try {
         	postService.delete ( requestDto );
 			return this.formatSuccessResponse(null);
+		} catch (Exception e) {
+			return this.formatErrorResponse(e);
+		}
+    }
+    
+    /**
+     * 查询帖子详情
+     * 
+     * @param requestDto
+     * @param ResponseDto
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/queryPostDeatil", method = RequestMethod.POST)
+    public ResponseDto queryPostDeatil(@RequestBody @Valid RequestDto<QueryPostDetailReqBody> requestDto) {
+        try {
+        	QueryPostDetailRespBody queryPostDetailRespBody =postService.queryPostDetail (requestDto);
+			return this.formatSuccessResponse(queryPostDetailRespBody);
 		} catch (Exception e) {
 			return this.formatErrorResponse(e);
 		}

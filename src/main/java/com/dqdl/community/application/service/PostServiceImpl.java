@@ -3,8 +3,10 @@ package com.dqdl.community.application.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dqdl.community.application.assembler.PostAssembler;
 import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.domain.model.user.PostAuthor;
+import com.dqdl.community.domain.model.user.PostReader;
 import com.dqdl.community.domain.repository.IPostRepository;
 import com.dqdl.community.infrastructure.exception.BusinessException;
 import com.dqdl.community.ui.dto.base.RequestDto;
@@ -12,12 +14,17 @@ import com.dqdl.community.ui.dto.post.DeletePostReqBody;
 import com.dqdl.community.ui.dto.post.DeletePostRespBody;
 import com.dqdl.community.ui.dto.post.PostingReqBody;
 import com.dqdl.community.ui.dto.post.PostingRespBody;
+import com.dqdl.community.ui.dto.post.QueryPostDetailReqBody;
+import com.dqdl.community.ui.dto.post.QueryPostDetailRespBody;
 
 @Service
 public class PostServiceImpl implements PostService {
 	
 	@Autowired
 	private IPostRepository postRepository;
+	
+	@Autowired
+	private PostAssembler postAssembler;
 	
 
 
@@ -45,7 +52,7 @@ public class PostServiceImpl implements PostService {
 		 */
 		postRepository.save(post);
 		
-		return null;
+		return postAssembler.assemblePostingRespBody(post);
 	}
 	
 
@@ -75,7 +82,34 @@ public class PostServiceImpl implements PostService {
 		
 		postAuthor.deletePost(post);
 		
+		postRepository.delete(post);		
+		
 		return null;
+	}
+
+
+	@Override
+	public QueryPostDetailRespBody queryPostDetail(RequestDto<QueryPostDetailReqBody> requestDto)
+			throws BusinessException {
+		QueryPostDetailReqBody queryPostDetailReqBody = requestDto.getBody();
+		
+		String readerId = queryPostDetailReqBody.getReaderId();
+		String postId = queryPostDetailReqBody.getPostId();
+		
+		long readerIdInLong = Long.valueOf(readerId);
+		long postIdInLong = Long.valueOf(postId);
+		
+		//TODO 可能有一些权限校验，比如：判定该读者是否有查看作者帖子的权限等。这里暂且不展开讨论。
+		PostReader postReader = new PostReader(readerIdInLong);
+		
+		Post post = postRepository.query(postIdInLong);
+		
+		/**
+		 * NOTE: 使用postAssembler将domain层的model组装成dto，组装过程：
+		 * 		1、完成类型转换、数据格式化；
+		 * 		2、将多个model组合成一个dto，一并返回。
+		 */
+		return postAssembler.assembleQueryPostDetailRespBody(post);
 	}
 	
 

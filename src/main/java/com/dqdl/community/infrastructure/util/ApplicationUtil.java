@@ -1,5 +1,7 @@
 package com.dqdl.community.infrastructure.util;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import org.apache.logging.log4j.LogManager;
@@ -69,5 +71,9 @@ public class ApplicationUtil implements ApplicationContextAware {
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}
+	
+    public String convertTimestampToString(Timestamp timestamp, String pattern) {
+        return (new SimpleDateFormat(pattern)).format(timestamp.getTime());
+    }
 
 }

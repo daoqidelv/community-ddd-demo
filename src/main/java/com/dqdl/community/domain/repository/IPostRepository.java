@@ -7,5 +7,7 @@ public interface IPostRepository {
 	Post query(long postId);
 	
 	int save(Post post);
+	
+	int delete(Post post);
 
 }

@@ -39,4 +39,10 @@ public class PostMemoryRepository implements IPostRepository {
 		return 1;
 	}
 
+	@Override
+	public int delete(Post post) {
+		Post toDeletePost = postRepository.remove(post.getId());
+		return toDeletePost != null ? 1 : 0;
+	}
+
 }

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.domain.repository.IPostRepository;
-import com.dqdl.community.infrastructure.repository.translator.PostRepositoryTranslator;
 
 @Repository
 public class PostRepository implements IPostRepository {
@@ -14,16 +13,38 @@ public class PostRepository implements IPostRepository {
 	private IPostRepository postMemoryRepository;
 	
 	@Autowired
-	private PostRepositoryTranslator postRepositoryTranslator;
+	private IPostRepository postRedisRepository;
 
 	public Post query(long postId) {
-		//TODO maybe need 'postRepositoryTranslator' to translate entity to domain model object.
-		
-		return postMemoryRepository.query(postId);
+		/**
+		 * NOTE： 如果使用redis做cache，那么这里会先查询redis，然后再查询主存
+		 * 		示例中，将memory仓库作为主存使用
+		 */
+		//1、查询缓存
+		Post post = postRedisRepository.query(postId);
+		if(post == null) {
+			//2.1、缓存为空，查询主存
+			post = postMemoryRepository.query(postId);
+			//2.2、将主存中查询到的结果缓存
+			postRedisRepository.save(post);
+		} 
+		//3、返回查询结果
+		return post;
 	}
 
 	public int save(Post post) {
+		//1、写入缓存
+		postRedisRepository.save(post);
+		//2、写入主存
 		return postMemoryRepository.save(post);
+	}
+
+	@Override
+	public int delete(Post post) {
+		//1、删除缓存
+		postRedisRepository.delete(post);
+		//2、删除主存
+		return postMemoryRepository.delete(post);
 	}
 
 }
