@@ -9,7 +9,9 @@ import com.dqdl.community.ui.dto.post.PostingRespBody;
 import com.dqdl.community.ui.dto.post.QueryPostDetailRespBody;
 
 /**
- * Post模块的组装器，完成domain model对象到dto的转换
+ * Post模块的组装器，完成domain model对象到dto的转换，组装职责包括：
+ * 		1、完成类型转换、数据格式化；如日志格式化，状态enum装换为前端认识的string；
+ * 		2、将多个model组合成一个dto，一并返回。
  * TODO: 不太好的地方每个assemble方法都需要先判断入参对象是否为空。
  * @author daoqidelv
  * @createdate 2017年9月24日

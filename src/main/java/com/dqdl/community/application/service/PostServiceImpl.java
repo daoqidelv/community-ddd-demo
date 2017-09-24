@@ -48,10 +48,13 @@ public class PostServiceImpl implements PostService {
 		Post post = postAuthor.posting(title, sourceContent);
 		
 		/**
-		 * 使用repository将model entity 写入存储
+		 * NOTE：使用repository将model entity 写入存储
 		 */
 		postRepository.save(post);
 		
+		/**
+		 * NOTE：使用postAssembler将Post model组装成dto返回。
+		 */
 		return postAssembler.assemblePostingRespBody(post);
 	}
 	
@@ -110,7 +113,6 @@ public class PostServiceImpl implements PostService {
 		 * 		2、将多个model组合成一个dto，一并返回。
 		 */
 		return postAssembler.assembleQueryPostDetailRespBody(post);
-	}
-	
+	}	
 
 }
