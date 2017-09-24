@@ -2,7 +2,7 @@ package com.dqdl.community.ui.dto.base;
 
 import javax.validation.Valid;
 
-public class RequestDto<T> {
+public class RequestDto<T> implements UIDto {
 	
 	/**
 	 * 请求渠道
@@ -14,7 +14,10 @@ public class RequestDto<T> {
 	 */
 	private String requestId;
 	
-	@Valid
+	/**
+	 * 对body使用validation
+	 */
+	@Valid 
 	private T body;
 
 	public String getChannel() {

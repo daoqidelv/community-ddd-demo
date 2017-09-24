@@ -13,7 +13,4 @@ public class PostingRespBody extends ResponseBody {
 	public void setPostId(String postId) {
 		this.postId = postId;
 	}
-	
-	
-
 }

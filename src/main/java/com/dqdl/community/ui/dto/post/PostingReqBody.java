@@ -36,8 +36,6 @@ public class PostingReqBody extends RequestBody {
 
 	public void setSourceContent(String sourceContent) {
 		this.sourceContent = sourceContent;
-	}
-
-    
+	}  
 
 }

@@ -1,6 +1,6 @@
 package com.dqdl.community.ui.dto.base;
 
-public class ResponseDto {
+public class ResponseDto implements UIDto{
 	
     /**
      * 状态码
@@ -40,6 +40,5 @@ public class ResponseDto {
 	public void setBody(Object body) {
 		this.body = body;
 	}
-
 	
 }
