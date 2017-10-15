@@ -3,6 +3,7 @@
  */
 package com.dqdl.community.domain.model.post;
 
+import com.dqdl.community.constant.CommonConstants;
 
 /**
  * @author DAOQIDELV
@@ -49,11 +50,11 @@ public enum PostStatus {
 	}
 	
 	public static PostStatus getPostStatus(String code) throws IllegalArgumentException {
-		if("00".equals(code)) {
+		if(CommonConstants.POST_STATUS_HAS_POSTED.equals(code)) {
 			return HAS_POSTED;
-		} else if("01".equals(code)) {
+		} else if(CommonConstants.POST_STATUS_WAIT_VERIFY.equals(code)) {
 			return WAIT_VERIFY;
-		} else if("99".equals(code)) {
+		} else if(CommonConstants.POST_STATUS_HAS_DELETED.equals(code)) {
 			return HAS_DELETED;
 		} else {
 			throw new IllegalArgumentException("Can not find a PostStatus for this code: "+code);

@@ -41,10 +41,13 @@ public class PostAssembler {
 			return null;
 		}
 		QueryPostDetailRespBody queryPostDetailRespBody = new QueryPostDetailRespBody();
-		queryPostDetailRespBody.setAuthorId(String.valueOf(post.getAuthorId())); //完成类型转换
-		queryPostDetailRespBody.setPostId(String.valueOf(post.getId()));//完成类型转换
+		//完成类型转换
+		queryPostDetailRespBody.setAuthorId(String.valueOf(post.getAuthorId())); 
+		//完成类型转换
+		queryPostDetailRespBody.setPostId(String.valueOf(post.getId()));
+		//完成日期格式化
 		queryPostDetailRespBody.setPostingTime(
-				applicationUtil.convertTimestampToString(post.getPostingTime(), POSTING_TIME_STRING_DATE_FORMAT));//完成日期格式化
+				applicationUtil.convertTimestampToString(post.getPostingTime(), POSTING_TIME_STRING_DATE_FORMAT));
 		queryPostDetailRespBody.setSourceContent(post.getSourceContent());
 		queryPostDetailRespBody.setTitle(post.getTitle());
 		return queryPostDetailRespBody;

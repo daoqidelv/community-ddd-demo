@@ -9,7 +9,7 @@ package com.dqdl.community.domain.service.contentfilter;
  * @CreateDate 2017年9月17日
  * 远程文本过滤器，需要调用第三方服务实现
  */
-public class RemoteTextContentFilter extends TextContentFilter {
+public class RemoteTextContentFilter extends AbstractTextContentFilter {
 
 	/* (non-Javadoc)
 	 * @see com.dqdl.community.domain.model.post.TextContentFilter#filtContent(com.dqdl.community.domain.model.post.Post)

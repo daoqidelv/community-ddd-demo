@@ -3,7 +3,11 @@ package com.dqdl.community.ui.dto.post;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.dqdl.community.ui.dto.base.RequestBody;
-
+/**
+ * DeletePost请求体
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 public class DeletePostReqBody extends RequestBody {
 	/**
 	 * 删帖用户id

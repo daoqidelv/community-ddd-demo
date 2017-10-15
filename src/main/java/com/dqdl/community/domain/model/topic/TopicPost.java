@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.dqdl.community.domain.model.Topic;
+package com.dqdl.community.domain.model.topic;
 
 
 /**

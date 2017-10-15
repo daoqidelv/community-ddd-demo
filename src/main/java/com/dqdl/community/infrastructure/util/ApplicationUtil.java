@@ -13,6 +13,11 @@ import org.springframework.stereotype.Component;
 
 import com.dqdl.community.constant.ReturnCode;
 
+/**
+ * 应用相关工具类
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 @Component
 public class ApplicationUtil implements ApplicationContextAware {
 	private static Logger logger = LogManager.getLogger(ApplicationUtil.class);
@@ -67,7 +72,8 @@ public class ApplicationUtil implements ApplicationContextAware {
 		}
 		return applicationContext.getMessage(ReturnCode.UNKNOWN_ERROR, null, new Locale(localeLang, localeCountry));
 	}
-
+	
+	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}

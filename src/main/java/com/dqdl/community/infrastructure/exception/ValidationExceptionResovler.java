@@ -63,7 +63,8 @@ public class ValidationExceptionResovler extends AbstractHandlerExceptionResolve
 		
 		Map<String,Object> map = new TreeMap<String,Object>();
 		map.put("returnCode", ReturnCode.INVALID_PARAMTER);
-		map.put("returnMsg", errmsgString); //错误信息细节使用validation返回的多个error的拼接
+		//错误信息细节使用validation返回的多个error的拼接
+		map.put("returnMsg", errmsgString); 
 		map.put("body", null);
         
         ModelAndView mav = new ModelAndView();

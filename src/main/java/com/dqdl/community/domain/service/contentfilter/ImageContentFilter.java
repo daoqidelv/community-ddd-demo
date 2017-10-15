@@ -9,7 +9,7 @@ package com.dqdl.community.domain.service.contentfilter;
  * @CreateDate 2017年9月17日
  * 图片过滤器
  */
-public class ImageContentFilter extends ContentFilter {
+public class ImageContentFilter extends AbstractContentFilter {
 
 	/* (non-Javadoc)
 	 * @see com.dqdl.community.domain.model.post.ContentFilter#filtContent(com.dqdl.community.domain.model.post.Post)

@@ -13,7 +13,7 @@ import org.springframework.util.Assert;
  * @CreateDate 2017年9月17日
  * 本地文本过滤器
  */
-public class LocalTextContentFilter extends TextContentFilter {
+public class LocalTextContentFilter extends AbstractTextContentFilter {
 	/**
 	 * 本地敏感词集合
 	 */

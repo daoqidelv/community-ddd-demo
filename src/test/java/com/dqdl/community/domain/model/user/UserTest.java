@@ -6,7 +6,11 @@ import static org.junit.Assert.assertFalse;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/**
+ * 
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 public class UserTest {
 	
 	private User user;

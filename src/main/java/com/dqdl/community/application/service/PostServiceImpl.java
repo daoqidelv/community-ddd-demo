@@ -16,7 +16,11 @@ import com.dqdl.community.ui.dto.post.PostingReqBody;
 import com.dqdl.community.ui.dto.post.PostingRespBody;
 import com.dqdl.community.ui.dto.post.QueryPostDetailReqBody;
 import com.dqdl.community.ui.dto.post.QueryPostDetailRespBody;
-
+/**
+ * 
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 @Service
 public class PostServiceImpl implements PostService {
 	
@@ -27,7 +31,7 @@ public class PostServiceImpl implements PostService {
 	private PostAssembler postAssembler;
 	
 
-
+	@Override
 	public PostingRespBody posting(RequestDto<PostingReqBody> requestDto) throws BusinessException {
 		PostingReqBody postingReqBody = requestDto.getBody();
 		/**
@@ -58,7 +62,7 @@ public class PostServiceImpl implements PostService {
 		return postAssembler.assemblePostingRespBody(post);
 	}
 	
-
+	@Override
 	public DeletePostRespBody delete(RequestDto<DeletePostReqBody> requestDto) throws BusinessException {
 		DeletePostReqBody deletePostReqBody = requestDto.getBody();
 		

@@ -2,6 +2,12 @@ package com.dqdl.community.ui.dto.base;
 
 import javax.validation.Valid;
 
+/**
+ * 请求dto
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ * @param <T>
+ */
 public class RequestDto<T> implements UIDto {
 	
 	/**

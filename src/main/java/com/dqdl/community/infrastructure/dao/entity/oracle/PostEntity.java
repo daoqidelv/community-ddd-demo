@@ -2,6 +2,13 @@ package com.dqdl.community.infrastructure.dao.entity.oracle;
 
 import java.sql.Timestamp;
 
+/**
+ * 该类中属性命名不规范，目的是为了表述translator组件存在的意义。
+ * 请忽略不规范命名，实际项目中，强烈推荐model和entity的属性名保持一致，如果能做到这一点，完全可以不要translator和entity。
+ * 直接使用model进行持久化操作。
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 public class PostEntity extends BaseEntity{
 	/**
 	 * 帖子id

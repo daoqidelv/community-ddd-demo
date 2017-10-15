@@ -11,6 +11,11 @@ import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.domain.model.post.PostStatus;
 import com.dqdl.community.infrastructure.exception.BusinessException;
 
+/**
+ * PostReader unit test class
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 public class PostReaderTest {
 	
 	private PostReader postReader;

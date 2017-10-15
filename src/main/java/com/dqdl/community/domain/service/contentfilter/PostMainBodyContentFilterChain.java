@@ -15,13 +15,14 @@ import com.dqdl.community.domain.model.post.Post;
  */
 public class PostMainBodyContentFilterChain {
 	
-	private Set<ContentFilter> contentFilters;
+	private Set<AbstractContentFilter> contentFilters;
 	
 	public PostMainBodyContentFilterChain() {
-		TextContentFilter localTextContentFilter = new LocalTextContentFilter();
-		TextContentFilter remoteTextContentFilter = new RemoteTextContentFilter();
+		AbstractTextContentFilter localTextContentFilter = new LocalTextContentFilter();
+		AbstractTextContentFilter remoteTextContentFilter = new RemoteTextContentFilter();
 		ImageContentFilter imageContentFilter = new ImageContentFilter();
-		contentFilters.add(localTextContentFilter); //优先校验本地的敏感词
+		//优先校验本地的敏感词
+		contentFilters.add(localTextContentFilter); 
 		contentFilters.add(remoteTextContentFilter);
 		contentFilters.add(imageContentFilter);
 	}
@@ -34,7 +35,7 @@ public class PostMainBodyContentFilterChain {
 	 *  false —— 未通过
 	 */
 	public boolean filtMainBody(Post post) {
-		for(Iterator<ContentFilter> it = contentFilters.iterator(); it.hasNext();) {
+		for(Iterator<AbstractContentFilter> it = contentFilters.iterator(); it.hasNext();) {
 			if(!it.next().filtContent(post.getSourceContent())) {
 				return false;
 			}

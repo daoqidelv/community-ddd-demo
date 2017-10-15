@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.domain.repository.IPostRepository;
-
+/**
+ * 帖子仓库实现类
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 @Repository
 public class PostRepository implements IPostRepository {
 	
@@ -15,6 +19,7 @@ public class PostRepository implements IPostRepository {
 	@Autowired
 	private IPostRepository postRedisRepository;
 
+	@Override
 	public Post query(long postId) {
 		/**
 		 * NOTE： 如果使用redis做cache，那么这里会先查询redis，然后再查询主存
@@ -32,6 +37,7 @@ public class PostRepository implements IPostRepository {
 		return post;
 	}
 
+	@Override
 	public int save(Post post) {
 		//1、写入缓存
 		postRedisRepository.save(post);

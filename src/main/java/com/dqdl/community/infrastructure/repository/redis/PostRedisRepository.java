@@ -21,6 +21,7 @@ public class PostRedisRepository implements IPostRepository {
 	/**
 	 * NOTE: maybe return 
 	 */
+	@Override
 	public Post query(long postId) {
 		//TODO maybe need 'postRepositoryTranslator' to translate entity to domain model object.
 		
@@ -28,6 +29,7 @@ public class PostRedisRepository implements IPostRepository {
 		return null;
 	}
 
+	@Override
 	public int save(Post post) {
 		//TODO use redisClient to save cache
 		return 1;

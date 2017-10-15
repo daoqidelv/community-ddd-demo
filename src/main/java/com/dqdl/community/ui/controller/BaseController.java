@@ -12,7 +12,11 @@ import com.dqdl.community.infrastructure.util.ApplicationUtil;
 import com.dqdl.community.ui.dto.base.ResponseBody;
 import com.dqdl.community.ui.dto.base.ResponseDto;
 
-
+/**
+ * 基础控制器类，提供通用的方法处理
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 public class BaseController {
 
 	private static Logger logger = LogManager.getLogger(BaseController.class);

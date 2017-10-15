@@ -28,10 +28,12 @@ public class PostMemoryRepository implements IPostRepository {
 		postRepository = new HashMap<Long, Post>();
 	}
 	
+	@Override
 	public Post query(long postId) {
 		return postRepository.get(postId);
 	}
 
+	@Override
 	public int save(Post post) {
 		long postId = postIdGenerator.incrementAndGet();
 		post.setId(postId);

@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
 
 import com.dqdl.community.constant.CommonConstants;
 import com.dqdl.community.constant.ReturnCode;
-import com.dqdl.community.domain.model.Topic.TopicPost;
+import com.dqdl.community.domain.model.topic.TopicPost;
 import com.dqdl.community.domain.model.user.PostAuthor;
 import com.dqdl.community.domain.service.contentfilter.PostMainBodyContentFilterChain;
 import com.dqdl.community.domain.service.contentfilter.PostTitleContentFilterChain;

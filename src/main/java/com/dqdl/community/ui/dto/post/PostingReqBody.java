@@ -4,6 +4,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.dqdl.community.ui.dto.base.RequestBody;
 
+/**
+ * Posting请求体
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 public class PostingReqBody extends RequestBody {
 
 	@NotEmpty(message="{request.userId.not.empty}")

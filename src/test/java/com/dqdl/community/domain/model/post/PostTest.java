@@ -14,9 +14,9 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.dqdl.community.constant.ReturnCode;
-import com.dqdl.community.domain.model.Topic.TopicPost;
 import com.dqdl.community.domain.model.post.Post;
 import com.dqdl.community.domain.model.post.PostStatus;
+import com.dqdl.community.domain.model.topic.TopicPost;
 import com.dqdl.community.domain.service.contentfilter.PostMainBodyContentFilterChain;
 import com.dqdl.community.domain.service.contentfilter.PostTitleContentFilterChain;
 import com.dqdl.community.infrastructure.exception.BusinessException;

@@ -24,7 +24,8 @@ public class PostRepositoryTranslator {
 		Post post = new Post(postEntity.getId());
 		post.setPostingTime(postEntity.getPosting_time());
 		post.setSourceContent(postEntity.getSource_content());
-		post.setStatus(PostStatus.getPostStatus(postEntity.getStatus())); //类型转换
+		//类型转换
+		post.setStatus(PostStatus.getPostStatus(postEntity.getStatus())); 
 		post.setTitle(postEntity.getTitle());
 		post.setSourceContent(postEntity.getSource_content());
 		return null;		
@@ -39,7 +40,8 @@ public class PostRepositoryTranslator {
 		postEntity.setAuthor_id(post.getAuthorId());
 		postEntity.setPosting_time(post.getPostingTime());
 		postEntity.setSource_content(postEntity.getSource_content()); 
-		postEntity.setStatus(post.getStatus().getCode()); //类型转换
+		//类型转换
+		postEntity.setStatus(post.getStatus().getCode()); 
 		postEntity.setTitle(post.getTitle());
 		return postEntity;
 	}

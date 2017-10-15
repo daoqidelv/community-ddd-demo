@@ -18,6 +18,11 @@ import com.dqdl.community.ui.dto.post.PostingRespBody;
 import com.dqdl.community.ui.dto.post.QueryPostDetailReqBody;
 import com.dqdl.community.ui.dto.post.QueryPostDetailRespBody;
 
+/**
+ * 帖子 模块对应控制器
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 @Controller
 @RequestMapping("/post")
 public class PostController extends BaseController {

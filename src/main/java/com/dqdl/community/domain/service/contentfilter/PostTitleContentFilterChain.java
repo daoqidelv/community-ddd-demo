@@ -15,12 +15,13 @@ import com.dqdl.community.domain.model.post.Post;
  */
 public class PostTitleContentFilterChain {
 	
-	private Set<ContentFilter> contentFilters;
+	private Set<AbstractContentFilter> contentFilters;
 	
 	public PostTitleContentFilterChain() {
-		TextContentFilter localTextContentFilter = new LocalTextContentFilter();
-		TextContentFilter remoteTextContentFilter = new RemoteTextContentFilter();
-		contentFilters.add(localTextContentFilter); //优先校验本地的敏感词
+		AbstractTextContentFilter localTextContentFilter = new LocalTextContentFilter();
+		AbstractTextContentFilter remoteTextContentFilter = new RemoteTextContentFilter();
+		//优先校验本地的敏感词
+		contentFilters.add(localTextContentFilter); 
 		contentFilters.add(remoteTextContentFilter);
 	}
 	
@@ -32,7 +33,7 @@ public class PostTitleContentFilterChain {
 	 *  false —— 未通过
 	 */
 	public boolean filtTitle(Post post) {
-		for(Iterator<ContentFilter> it = contentFilters.iterator(); it.hasNext();) {
+		for(Iterator<AbstractContentFilter> it = contentFilters.iterator(); it.hasNext();) {
 			if(!it.next().filtContent(post.getTitle())) {
 				return false;
 			}

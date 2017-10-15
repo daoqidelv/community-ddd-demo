@@ -2,6 +2,11 @@ package com.dqdl.community.domain.model.user;
 
 import org.springframework.util.Assert;
 
+/**
+ * 用户 实体
+ * @author daoqidelv
+ * @createdate 2017年10月15日
+ */
 public class User {
 	/**
 	 * 用户id

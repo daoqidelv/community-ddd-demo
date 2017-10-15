@@ -15,6 +15,8 @@ import com.dqdl.community.infrastructure.exception.BusinessException;
  */
 public class PostAuthor extends User{
 	
+	private final static int MIN_LENGTH_POST_SOURCE_CONTENT = 16;
+	
 	public PostAuthor(long id) {
 		super(id);
 	}
@@ -25,8 +27,9 @@ public class PostAuthor extends User{
 	 * @return Post 发布得到的帖子
 	 */
 	public Post posting(String title, String sourceContent) throws BusinessException {
-		if(sourceContent.length() < 16) {
-			throw new BusinessException(ReturnCode.POST_SOURCE_CONTENT_AT_LEAST_SIXTEEN_WORDS); //抛出业务异常
+		if(sourceContent.length() < MIN_LENGTH_POST_SOURCE_CONTENT) {
+			 //抛出业务异常
+			throw new BusinessException(ReturnCode.POST_SOURCE_CONTENT_AT_LEAST_SIXTEEN_WORDS);
 		}
 		Post post = new Post(this.getId(), title, sourceContent);
 		return post;
